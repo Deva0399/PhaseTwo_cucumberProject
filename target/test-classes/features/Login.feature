@@ -1,24 +1,24 @@
 @LoginFeature
-Feature: Login Feature
+Feature: Login Feature Scenario
 
-	@Regression
-  Scenario Outline: Positive login scenario
-    Given User has lunched website
-    When User Enter correct username "<UserName>" and password "<Password>"
-    And User clicks on login Button
-    Then User should be navigated to the product page "<Product>"
-
-    Examples: 
-      | UserName      | Password     | Product  |
-      | standard_user | secret_sauce | PRODUCTS |
-      
-	@Regression
-  Scenario Outline: Negative login scenario
-    Given User has lunched website
-    When User Enter correct username "<UserName>" and password "<Password>"
-    And User clicks on login Button
-    Then User should be getting the "<Error>"
+  Scenario Outline: Possitive Login Feature
+    Given User Opened Swag Lab Application
+    When User Enters username "<UserName>"
+    And User Enter Password "<password>"
+    And Clicks on Login Button
+    Then User Should be on the Products Page
 
     Examples: 
-      | UserName      | Password | Error                                                                     |
-      | standard_user | secre    | Epic sadface: Username and password do not match any user in this service |
+      | UserName      | password     |
+      | standard_user | secret_sauce |
+
+  Scenario Outline: Negetive Login Feature
+    Given User Opened Swag Lab Application
+    When User Enters username "<UserName>"
+    And User Enter Password "<password>"
+    And Clicks on Login Button
+    Then User Should Get "<Error>"
+
+    Examples: 
+      | UserName      | password | Error                                                                     |
+      | standard_user | Test1234 | Epic sadface: Username and password do not match any user in this service |
